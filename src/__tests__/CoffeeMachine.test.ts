@@ -58,13 +58,14 @@ describe("CoffeeMachine", () => {
 
   it("should make every fifth non-large drink free with a loyalty card", () => {
     const machine = new CoffeeMachine();
-    new Drink("Coffee", 2, false, 0, "small");
-    new Drink("Coffee", 2, false, 0, "small");
-    new Drink("Coffee", 2, false, 0, "small");
-    new Drink("Coffee", 2, false, 0, "small");
+    const drink = new Drink("Coffee", 2, false, 0, "small");
     const freeDrink = new Drink("Coffee", 2, false, 0, "small");
 
-    const result = machine.serve(freeDrink, 3, true, 10);
+    machine.serve(drink, 2, false, 10);
+    machine.serve(drink, 2, false, 10);
+    machine.serve(drink, 2, false, 10);
+    machine.serve(drink, 2, false, 10);
+    const result = machine.serve(freeDrink, 1, true, 10);
 
     expect(result).toBe("Serving Coffee (small) with change 1.00");
   });
